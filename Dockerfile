@@ -1,4 +1,4 @@
-FROM babim/debianbase:cron.ssh
+FROM babim/debianbase:cron
 
 # install
 RUN apt-get update && apt-get install git && \
