@@ -17,7 +17,7 @@ ADD run.sh /run.sh
 RUN mv /letsencrypt /letsencrypt-start && \
     ln -sf /letsencrypt /letsencrypt-start && \
     mkdir -p /letsencrypt-start/etc && \
-    ln -sf /etc/letsencrypt /letsencrypt-start/etc && chmod +x /run.sh
+    ln -sf /etc/letsencrypt /letsencrypt/etc && chmod +x /run.sh
 
 VOLUME /letsencrypt/
 WORKDIR /letsencrypt
