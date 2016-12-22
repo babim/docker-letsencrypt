@@ -1,4 +1,5 @@
 FROM babim/debianbase:cron.ssh
+
 # install
 RUN apt-get update && apt-get install git && \
     git clone https://github.com/letsencrypt/letsencrypt /letsencrypt && \
@@ -13,8 +14,12 @@ RUN apt-get clean && \
     rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
 #make data
 ADD run.sh /run.sh
-RUN mv /letsencrypt /letsencrypt-start && ln -sf /letsencrypt-start /letsencrypt && chmod +x /run.sh
+RUN mv /letsencrypt /letsencrypt-start && \
+    ln -sf /letsencrypt-start /letsencrypt && \
+    mkdir -p /letsencrypt-start/etc && \
+    ln -sf /letsencrypt-start/etc /etc/letsencrypt && chmod +x /run.sh
 
+VOLUME /letsencrypt/
 WORKDIR /letsencrypt
 ENTRYPOINT ["/run.sh"]
 CMD ["bash"]
