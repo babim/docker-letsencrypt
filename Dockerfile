@@ -15,9 +15,9 @@ RUN apt-get clean && \
 # make data
 ADD run.sh /run.sh
 RUN mv /letsencrypt /letsencrypt-start && \
-    ln -sf /letsencrypt /letsencrypt-start && \
+    ln -sf /letsencrypt-start /letsencrypt && \
     mkdir -p /letsencrypt-start/etc && \
-    ln -sf /etc/letsencrypt /letsencrypt/etc && chmod +x /run.sh
+    ln -sf /letsencrypt/etc /etc/letsencrypt && chmod +x /run.sh
 
 VOLUME /letsencrypt/
 WORKDIR /letsencrypt
