@@ -4,7 +4,7 @@ FROM babim/debianbase:cron
 RUN apt-get update && apt-get install git -y && \
     git clone https://github.com/letsencrypt/letsencrypt /letsencrypt && \
     /letsencrypt/letsencrypt-auto --os-packages-only
-#clean
+# clean
 RUN apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove -y && \
@@ -12,7 +12,7 @@ RUN apt-get clean && \
     rm -rf /tmp/* /var/tmp/* && \
     rm -rf /var/lib/apt/lists/* && \
     rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
-#make data
+# make data
 ADD run.sh /run.sh
 RUN mv /letsencrypt /letsencrypt-start && \
     ln -sf /letsencrypt-start /letsencrypt && \
