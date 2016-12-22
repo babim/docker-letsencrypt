@@ -6,6 +6,10 @@ docker run --name letsencrypt -p 80:80 -p 443:443 -v /data/letsencrypt-data:/let
 ```
 volume: /letsencrypt /letsencrypt/etc
 
-start with bash
+## start with bash
 
 go to console and use by command ./letsencrypt-auto or /letsencrypt/letsencrypt-auto
+
+## config crontab
+
+30 2 * * 1 /letsencrypt/letsencrypt-auto renew
