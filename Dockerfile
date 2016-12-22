@@ -1,7 +1,7 @@
 FROM babim/debianbase:cron
 
 # install
-RUN apt-get update && apt-get install git && \
+RUN apt-get update && apt-get install git -y && \
     git clone https://github.com/letsencrypt/letsencrypt /letsencrypt && \
     /letsencrypt/letsencrypt-auto --os-packages-only
 #clean
