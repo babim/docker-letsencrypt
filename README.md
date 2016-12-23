@@ -21,3 +21,11 @@ For this example I run the job once a month on the 1st day of the month at 12AM.
 0 0 1 * * /letsencrypt/src/letsencrypt-auto renew
 0 0 1 * * /letsencrypt/ns/ns-cronjob.sh
 ```
+
+## document Let's Encrypt
+
+https://www.linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates
+
+## document ns-letsencrypt
+
+http://techdrabble.com/citrix/18-letsencrypt-san-certificate-with-citrix-netscaler-take-2
