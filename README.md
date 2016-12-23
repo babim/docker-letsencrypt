@@ -12,5 +12,7 @@ go to console and use by command ./letsencrypt-auto or /letsencrypt/letsencrypt-
 
 ## config crontab
 ```
-30 2 * * 1 /letsencrypt/letsencrypt-auto renew
+For this example I run the job once a month on the 1st day of the month at 12AM.
+0 0 1 * * /letsencrypt/src/letsencrypt-auto renew
+0 0 1 * * /letsencrypt/ns/ns-cronjob.sh
 ```
