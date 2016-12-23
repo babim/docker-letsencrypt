@@ -10,6 +10,7 @@ letsencrypt on Debian
 docker run --name letsencrypt -p 80:80 -p 443:443 -v /data/letsencrypt-data:/letsencrypt babim/letsencrypt
 ```
 volume: /letsencrypt /letsencrypt/etc
+SSH password: -e SSHPASS=pass or default root
 
 ## start with bash
 
