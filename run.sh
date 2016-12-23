@@ -6,4 +6,4 @@ if [ -z "`ls /letsencrypt`" ]; then cp -R /letsencrypt-start/* /letsencrypt; fi
 if [ -f "/letsencrypt/update.sh" ]; then /letsencrypt/update.sh; fi
 # cron
 service cron start
-exec "$@"
+exec bash
