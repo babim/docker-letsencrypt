@@ -8,7 +8,12 @@ volume: /letsencrypt /letsencrypt/etc
 
 ## start with bash
 
-go to console and use by command ./letsencrypt-auto or /letsencrypt/letsencrypt-auto
+go to console and use by command 
+```
+./letsencrypt-auto
+or
+/letsencrypt/src/letsencrypt-auto
+```
 
 ## config crontab
 ```
