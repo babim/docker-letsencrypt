@@ -1,8 +1,10 @@
 FROM babim/debianbase:cron
 
 # install
-RUN apt-get update && apt-get install git -y && \
+RUN apt-get update && apt-get install python git python-pip curl -y && \
     git clone https://github.com/letsencrypt/letsencrypt /letsencrypt && \
+    git clone --recursive https://github.com/ryancbutler/ns-letsencrypt /ns-letsencrypt && \
+    cp /ns-letsencrypt/domains.txt.example /ns-letsencrypt/domains.txt && cp /ns-letsencrypt/config.sh.example /ns-letsencrypt/config.sh && \
     /letsencrypt/letsencrypt-auto --os-packages-only
 # clean
 RUN apt-get clean && \
@@ -14,13 +16,13 @@ RUN apt-get clean && \
     rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
 # make data
 ADD run.sh /run.sh
-RUN mv /letsencrypt /letsencrypt-start && \
+RUN mkdir /letsencrypt-start && mv /letsencrypt /letsencrypt-start/src && mv /ns-letsencrypt /letsencrypt-start/ns && \
     ln -sf /letsencrypt-start /letsencrypt && \
     mkdir -p /letsencrypt-start/etc && \
     ln -sf /letsencrypt/etc /etc/letsencrypt && chmod +x /run.sh
 
 VOLUME /letsencrypt/
-WORKDIR /letsencrypt
+WORKDIR /letsencrypt/src
 ENTRYPOINT ["/run.sh"]
 CMD ["bash"]
 EXPOSE 80 443
