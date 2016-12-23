@@ -21,11 +21,8 @@ RUN mkdir /letsencrypt-start && mv /letsencrypt /letsencrypt-start/src && mv /ns
     mkdir -p /letsencrypt-start/etc && \
     ln -sf /letsencrypt/etc /etc/letsencrypt && chmod +x /run.sh
 # make update file
-RUN echo 'cd /letsencrypt/src' > /letsencrypt/update.sh && \
-    echo 'git pull' >> /letsencrypt/update.sh && \
-    echo 'cd /letsencrypt/ns' >> /letsencrypt/update.sh && \
-    echo 'git pull' >> update.sh && \
-    chmod +x /letsencrypt/update.sh
+ADD update.sh /letsencrypt/update.sh
+RUN chmod +x /letsencrypt/update.sh
 
 VOLUME /letsencrypt/
 WORKDIR /letsencrypt/src
