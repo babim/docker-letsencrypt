@@ -1,4 +1,4 @@
-FROM babim/ubuntubase:cron
+FROM babim/debianbase:cron
 
 # install
 RUN apt-get update && apt-get install python git python-pip curl -y && \
