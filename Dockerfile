@@ -27,5 +27,5 @@ RUN chmod +x /letsencrypt/update.sh
 VOLUME /letsencrypt/
 WORKDIR /letsencrypt/src
 ENTRYPOINT ["/run.sh"]
-
+CMD ["/usr/sbin/sshd", "-D"]
 EXPOSE 80 443
