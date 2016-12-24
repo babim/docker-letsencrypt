@@ -1,12 +1,8 @@
 FROM babim/debianbase:cron
 
 # install
-RUN apt-get update && apt-get install python git python-pip curl -y && pip install requests && \
+RUN apt-get update && apt-get install git -y && \
     git clone https://github.com/letsencrypt/letsencrypt /letsencrypt && \
-    git clone --recursive https://github.com/ryancbutler/ns-letsencrypt /ns-letsencrypt && \
-    cp /ns-letsencrypt/domains.txt.example /ns-letsencrypt/domains.txt && \
-    cp /ns-letsencrypt/config.sh.example /ns-letsencrypt/config.sh && \
-    cp /ns-letsencrypt/mynsconfig.py.example /ns-letsencrypt/mynsconfig.py && \
     /letsencrypt/letsencrypt-auto --os-packages-only && /letsencrypt/letsencrypt-auto --help
 # clean
 RUN apt-get clean && \
@@ -18,15 +14,12 @@ RUN apt-get clean && \
     rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
 # make data
 ADD run.sh /run.sh
-RUN mkdir /letsencrypt-start && mv /letsencrypt /letsencrypt-start/src && mv /ns-letsencrypt /letsencrypt-start/ns && \
+RUN mkdir /letsencrypt-start && mv /letsencrypt /letsencrypt-start/src && \
     ln -sf /letsencrypt-start /letsencrypt && \
     mkdir -p /letsencrypt-start/etc && \
-    ln -sf /letsencrypt/etc /etc/letsencrypt && chmod +x /run.sh && \
-    ns -sf /letsencrypt/ns /root/ns-letsencrypt
+    ln -sf /letsencrypt/etc /etc/letsencrypt && chmod +x /run.sh
 # make update file
 ADD update.sh /letsencrypt/update.sh
-ADD netscaler-first.sh /letsencrypt/netscaler-first.sh
-ADD netscaler-cronjob.sh /letsencrypt/netscaler-cronjob.sh
 RUN chmod +x /letsencrypt/*.sh
 
 VOLUME /letsencrypt/
