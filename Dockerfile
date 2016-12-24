@@ -1,7 +1,7 @@
 FROM babim/debianbase:cron
 
 # install
-RUN apt-get update && apt-get install python git python-pip curl -y && \
+RUN apt-get update && apt-get install python git python-pip curl -y && pip install requests && \
     git clone https://github.com/letsencrypt/letsencrypt /letsencrypt && \
     git clone --recursive https://github.com/ryancbutler/ns-letsencrypt /ns-letsencrypt && \
     cp /ns-letsencrypt/domains.txt.example /ns-letsencrypt/domains.txt && cp /ns-letsencrypt/config.sh.example /ns-letsencrypt/config.sh && \
