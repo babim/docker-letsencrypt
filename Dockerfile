@@ -4,7 +4,9 @@ FROM babim/debianbase:cron.ssh
 RUN apt-get update && apt-get install python git python-pip curl -y && pip install requests && \
     git clone https://github.com/letsencrypt/letsencrypt /letsencrypt && \
     git clone --recursive https://github.com/ryancbutler/ns-letsencrypt /ns-letsencrypt && \
-    cp /ns-letsencrypt/domains.txt.example /ns-letsencrypt/domains.txt && cp /ns-letsencrypt/config.sh.example /ns-letsencrypt/config.sh && \
+    cp /ns-letsencrypt/domains.txt.example /ns-letsencrypt/domains.txt && \
+    cp /ns-letsencrypt/config.sh.example /ns-letsencrypt/config.sh && \
+    cp /ns-letsencrypt/mynsconfig.py.example /ns-letsencrypt/mynsconfig.py && \
     /letsencrypt/letsencrypt-auto --os-packages-only && /letsencrypt/letsencrypt-auto --help
 # clean
 RUN apt-get clean && \
