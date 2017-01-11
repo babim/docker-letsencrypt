@@ -44,7 +44,7 @@ cat <<EOF >/etc/periodic/monthly/reissue
 set -euo pipefail
 # Certificate reissue
 letsencrypt certonly --renew-by-default \
-  --domain ${lastsubDOMAIN} \
+   $lastsubDOMAIN \
   --authenticator webroot \
   --webroot-path /etc/letsencrypt/webrootauth/ ${SERVER} \
   --email "${EMAIL}" --agree-tos
@@ -58,7 +58,7 @@ cat <<EOF >>/etc/periodic/monthly/reissue
 set -euo pipefail
 # Certificate reissue
 letsencrypt certonly --renew-by-default \
-  --domain ${lastsubDOMAIN} \
+   $lastsubDOMAIN \
   --authenticator webroot \
   --webroot-path /etc/letsencrypt/webrootauth/ ${SERVER} \
   --email "${EMAIL}" --agree-tos
