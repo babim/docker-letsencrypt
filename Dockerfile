@@ -24,9 +24,7 @@ RUN mkdir /letsencrypt-start && mv /letsencrypt /letsencrypt-start/src && mv /ns
     ln -sf /letsencrypt/etc /etc/letsencrypt && chmod +x /run.sh && \
     ln -sf /letsencrypt/ns /root/ns-letsencrypt
 # make update file
-ADD update.sh /letsencrypt-start/update.sh
-ADD netscaler-first.sh /letsencrypt-start/netscaler-first.sh
-ADD netscaler-cronjob.sh /letsencrypt-start/netscaler-cronjob.sh
+COPY sh /letsencrypt-start/
 RUN chmod +x /letsencrypt-start/*.sh
 
 VOLUME /letsencrypt/
