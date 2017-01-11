@@ -7,6 +7,9 @@ if [ -z "`ls /letsencrypt`" ]; then cp -R /letsencrypt-start/* /letsencrypt;fi
 # start cron
 if [ -f "/runcron.sh" ]; then /runcron.sh; fi
 
+# ssh
+if [ -f "/runssh.sh" ]; then /runssh.sh; fi
+
 # start auto
 if [ -n "${AUTO:-}" ]; then /letsencrypt/auto.sh; fi
 
