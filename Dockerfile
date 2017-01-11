@@ -19,8 +19,8 @@ RUN mkdir /letsencrypt-start && mv /letsencrypt /letsencrypt-start/src && \
     mkdir -p /letsencrypt-start/etc && \
     ln -sf /letsencrypt/etc /etc/letsencrypt && chmod +x /run.sh
 # make update file
-ADD update.sh /letsencrypt/update.sh
-RUN chmod +x /letsencrypt/*.sh
+ADD update.sh /letsencrypt-start/update.sh
+RUN chmod +x /letsencrypt-start/*.sh
 
 VOLUME /letsencrypt/
 WORKDIR /letsencrypt/src
