@@ -8,4 +8,8 @@ if [ -f "/letsencrypt/update.sh" ]; then /letsencrypt/update.sh; fi
 if [ -f "/runssh.sh" ]; then /runssh.sh; fi
 # cron
 service cron start
+
+# start auto
+if [ -n "${AUTO:-}" ]; then /letsencrypt/auto.sh; fi
+
 exec "$@"
