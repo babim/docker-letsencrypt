@@ -27,7 +27,3 @@ or set `-e AUTO=1` to run auto.sh when start
 ## document Let's Encrypt
 
 https://www.linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates
-
-## document ns-letsencrypt
-
-http://techdrabble.com/citrix/18-letsencrypt-san-certificate-with-citrix-netscaler-take-2
