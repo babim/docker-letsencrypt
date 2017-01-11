@@ -10,7 +10,12 @@ MISSING=""
 [ -z "${DOMAIN}" ] && MISSING="${MISSING} DOMAIN"
 [ -z "${EMAIL}" ] && MISSING="${MISSING} EMAIL"
 
-if [ "${MISSING}" = "" ]; then
+if [ "${MISSING}" != "" ]; then
+  echo "Missing required environment variables:" >&2
+  echo " ${MISSING}" >&2
+  echo " Check and Try again!" >&2
+  exit 1
+fi
 
 # Default other parameters
 
