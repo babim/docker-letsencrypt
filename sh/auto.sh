@@ -1,9 +1,16 @@
 #!/bin/bash
 # Validate environment variables
 
+# start auto
+if [ ! -n "${DOMAIN:-}" ]; then
 read -p "Type Domain (example: video.matmagoc.com audio.matmagoc.com matmagoc.com): " DOMAIN
+fi
+if [ ! -n "${EMAIL:-}" ]; then
 read -p "Type Email: " EMAIL
+fi
+if [ ! -n "${STAGING:-}" ]; then
 read -p "STAGING Server (Type 1 or enter to skip): " STAGING
+fi
 
 MISSING=""
 
