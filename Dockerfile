@@ -16,6 +16,7 @@ COPY sh /letsencrypt-start/
 RUN chmod +x /letsencrypt-start/*.sh
 
 VOLUME /letsencrypt/
-WORKDIR /letsencrypt/src
+WORKDIR /letsencrypt
 ENTRYPOINT ["/run.sh"]
+CMD ["bash"]
 EXPOSE 80 443
