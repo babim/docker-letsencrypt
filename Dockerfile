@@ -1,4 +1,4 @@
-FROM babim/alpinebase:cron
+FROM babim/alpinebase
 
 # install
 RUN apk add --no-cache python py-pip curl bash nano \
