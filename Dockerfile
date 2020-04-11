@@ -4,7 +4,7 @@ FROM babim/alpinebase
 RUN apk add --no-cache python py-pip curl bash nano \
     python-dev git gcc musl-dev linux-headers augeas-dev openssl-dev libffi-dev ca-certificates dialog \
     && pip install -U letsencrypt \
-    && apk del python-dev git gcc musl-dev linux-headers augeas-dev openssl-dev libffi-dev ca-certificates dialog
+    && apk del python-dev git gcc musl-dev linux-headers augeas-dev dialog
 
 # make data
 ADD run.sh /run.sh
